@@ -1,0 +1,11 @@
+resource_metrics:
+  - instrumentation_library_metrics:
+      - metrics:
+          - name: "\\Memory\\Committed Bytes"
+            type: DoubleGauge
+          - name: "\\Processor(*)\\% Processor Time"
+            type: DoubleGauge
+          - name: "\\Processor(*)\\% Idle Time"
+            type: DoubleGauge
+
+

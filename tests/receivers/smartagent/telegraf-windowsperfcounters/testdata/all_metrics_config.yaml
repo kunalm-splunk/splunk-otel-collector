@@ -1,0 +1,29 @@
+receivers:
+  windowsperfcounters:
+    collection_interval: 1s
+    perfcounters:
+      - object: "Memory"
+        counters:
+          - "Committed Bytes"
+      - object: "Processor"
+        instances: "*"
+        counters:
+          - "% Processor Time"
+      - object: "Processor"
+        instances: "*"
+        counters:
+          - "% Idle Time"
+
+exporters:
+  otlp:
+    endpoint: "${OTLP_ENDPOINT}"
+    tls:
+      insecure: true
+  logging:
+    logLevel: debug
+
+service:
+  pipelines:
+    metrics:
+      receivers: [windowsperfcounters]
+      exporters: [otlp, logging]
